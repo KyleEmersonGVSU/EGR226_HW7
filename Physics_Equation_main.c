@@ -6,14 +6,13 @@
 */
 
 #include <stdio.h>
-#include "Keypad.c"
-#include "LCD.c"
+#include "Keypad.h"
+#include "LCD.h"
 #include <string.h>
 
 int main(void){
 	/* SysTick Delay Setups*/
 	Systick_Init();
-	SysTick_init();
 	/* Device Setups */
 	KeyPad_Init();
 	LCD_initialization();
@@ -22,10 +21,10 @@ int main(void){
 	uint16_t num, pressed;
 	num = 0;
 	uint16_t *numptr = &num;
-	int key;
+
+	write_data(0xE4); //Write Epsilon character
+	write_command(0x06); //Move cursor right
 	
-	key = Read_KeyPad(numptr);
-	while (key != 0){
 		
 	
 	
