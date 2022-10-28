@@ -21,12 +21,16 @@ int main(void){
 	uint16_t num, pressed;
 	num = 0;
 	uint16_t *numptr = &num;
-
+	
 	write_data(0xE4); //Write Epsilon character
 	write_command(0x06); //Move cursor right
 	
-		
-	
+	while(1){
+	pressed = Read_KeyPad(numptr);
+		if (pressed != 0){
+			Print_Keys(numptr);
+		}
+	}
 	
 	
 }
